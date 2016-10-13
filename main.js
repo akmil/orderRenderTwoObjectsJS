@@ -18,23 +18,6 @@ function main(){
   	orderByList(metaJson,mainJson);
   }//init END
   
-  //show log
-  function log() {
-    for (var i = 0; i < arguments.length; i++) {
-      console.log(arguments[i] );
-      $('body')      
-      	.append( "<strong style='color: black'>"+arguments[i] + ' ' + "</strong>" );
-      }
-      $('body').append('<br>');
-  }
-  function info() {
-    for (var i = 0; i < arguments.length; i++) {
-        console.info(arguments[i] );
-        $('body').append(arguments[i] + ' ').css({'color':'gray'});
-        }
-        $('body').append('<br>');    
-  }
-  //show log end
     
   //sorting
   //swager - is main Json file
@@ -46,17 +29,17 @@ function main(){
 		inList = false,
         contEmpty = 0;
     
-    info('. . . . main Json have such keys : ' , xArr.join(', '));
-    info('additional Json have such keys : ' , sw.join(', '));    
-    info('order list:', x.list.join(', '));
-    info('...........');    
+    console.log('. . . . main Json have such keys : ' , xArr.join(', '));
+    console.log('additional Json have such keys : ' , sw.join(', '));    
+    console.log('order list:', x.list.join(', '));
+    console.log('...........');    
    
     for(var i=0; i<sw.length; i++){
     
     //show item in list first
     	if(!inList){
       for(var k=0; k<x.list.length; k++){    
-        log('__ sort by x.list:', x.list[k] ,'val = ', (x[x.list[k]])?x[x.list[k]]: swager[x.list[k]] );
+        console.log('__ sort by x.list:', x.list[k] ,'val = ', (x[x.list[k]])?x[x.list[k]]: swager[x.list[k]] );
         if(k < x.list.length) inList = true; //???test me x.list.length+1
         }//end for x.list
     	}      
@@ -66,7 +49,7 @@ function main(){
         if(sw[i] !== x.list[j]){
         	contEmpty++;
           if(contEmpty === x.list.length){
-  					log('**not in list ['+j+']:', sw[i] ,'val = ', (x[sw[i]])? x[sw[i]]: swager[sw[i]]);
+		console.log('**not in list ['+j+']:', sw[i] ,'val = ', (x[sw[i]])? x[sw[i]]: swager[sw[i]]);
           }
         }
         
