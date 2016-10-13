@@ -1,18 +1,19 @@
 /**
 * Compare two obj. first obj is full, second - is addition and contain 'listOrder' array with keys of Obj. Should be sorted 'listOrder'
+* AC - can't be used Array.map() or forEach() or for(key in obj) constructions. Use only standart for(i++) loop
 */
 function main(){
 	return init();
-  
+
 	function init(){
-  var console1 = {};
-  var mainJson = {
-    item1:'swager_1',item2:'swager_2',item3:'swager_3',item5:'swager_5',item6:'swager_6',
-  }; 
-  var metaJson = {
-    item6:'from x =6',  item3:'from x =3 ',
-    list: ['item2','item3']
-  }  	
+	  var console1 = {};
+	  var mainJson = {
+	    item1:'swager_1',item2:'swager_2',item3:'swager_3',item5:'swager_5',item6:'swager_6',
+	  }; 
+	  var metaJson = {
+	    item6:'from x =6',  item3:'from x =3 ',
+	    list: ['item2','item3']
+	  }  	
     
   	orderByList(metaJson,mainJson);
   }//init END
@@ -41,15 +42,14 @@ function main(){
   //if in 'swager' not found some filed from swager.list then search it in 'x'
   function orderByList(x,swager){
   	var xArr = Object.keys(x),
-    		sw = Object.keys(swager);    
+		sw = Object.keys(swager),
+		inList = false,
+        contEmpty = 0;
     
     info('. . . . main Json have such keys : ' , xArr.join(', '));
     info('additional Json have such keys : ' , sw.join(', '));    
     info('order list:', x.list.join(', '));
-    info('...........');
-    var inList = false,
-        contEmpty = 0;
-    
+    info('...........');    
    
     for(var i=0; i<sw.length; i++){
     
