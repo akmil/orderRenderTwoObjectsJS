@@ -15,10 +15,10 @@ function main(){
 	  var metaJson = {
 	    item6:'from x =6',  item3:'from x =3 ',
 	    list: ['item2','item3']
-	  }  	
+	  };
     
   	orderByList(metaJson,mainJson);
-  }//init END
+  };//init END
   
     
   //sorting
@@ -44,7 +44,7 @@ function main(){
 	}      
       
      //show item that not in list
-     showItemOutOfList({x: x, i: i ,swager: swager, sw: sw});
+     contEmpty = showItemOutOfList({x: x, i: i, contEmpty: contEmpty} , {swager: swager, sw: sw});
         
      	}//end for xArr      
       contEmpty =0;
@@ -52,8 +52,8 @@ function main(){
       
   }
   function showInfo(infoDataObj) {
-    var mainArr = infoDataObj.mainArr, 
-        additionalArray = infoDataObj.additionalArray, 
+    var mainArr = infoDataObj.xArr, 
+        additionalArray = infoDataObj.sw, 
         metaJson = infoDataObj.metaJson;
     console.log('. . . . main Json have such keys : ' , mainArr.join(', '));
     console.log('additional Json have such keys : ' , additionalArray.join(', '));    
@@ -64,8 +64,9 @@ function main(){
   //show item that not in list
   function showItemOutOfList(dataObj, consoleInfoObj){
     var x = dataObj.x, 
-        i = dataObj.i, 
-	sw = consoleInfoObj.sw,
+        i = dataObj.i,
+        contEmpty = dataObj.contEmpty,
+	    sw = consoleInfoObj.sw,
         swager = consoleInfoObj.swager;
 	  
 	for(var j=0; j<x.list.length; j++) {
@@ -75,9 +76,9 @@ function main(){
 	      console.log('**not in list ['+j+']:', sw[i] ,'val = ', (x[sw[i]])? x[sw[i]]: swager[sw[i]]);
 	    }
 	}
+    return contEmpty;
   }
   
 }//main END
 
-main();
-
+main()();
