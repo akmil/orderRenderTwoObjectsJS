@@ -32,7 +32,7 @@ function main(){
             contEmpty = 0,
 	    x = metaJson;
 	  
-    showInfo(xArr, sw, metaJson);    
+    showInfo({xArr: xArr, sw: sw, metaJson: metaJson});
    
     for(var i=0; i<sw.length; i++) {
     //show item in list first
@@ -44,14 +44,17 @@ function main(){
 	}      
       
      //show item that not in list
-     showItemOutOfList(x, i ,swager);
+     showItemOutOfList({x: x, i: i ,swager: swager, sw: sw});
         
      	}//end for xArr      
       contEmpty =0;
      }//end for sw
       
   }
-  function showInfo(mainArr, additionalArray, metaJson) {
+  function showInfo(infoDataObj) {
+    var mainArr = infoDataObj.mainArr, 
+        additionalArray = infoDataObj.additionalArray, 
+        metaJson = infoDataObj.metaJson;
     console.log('. . . . main Json have such keys : ' , mainArr.join(', '));
     console.log('additional Json have such keys : ' , additionalArray.join(', '));    
     console.log('order list:', metaJson.list.join(', '));
@@ -59,7 +62,12 @@ function main(){
   }
 
   //show item that not in list
-  function showItemOutOfList(x, i ,swager){
+  function showItemOutOfList(dataObj, consoleInfoObj){
+    var x = dataObj.x, 
+        i = dataObj.i, 
+	sw = consoleInfoObj.sw,
+        swager = consoleInfoObj.swager;
+	  
 	for(var j=0; j<x.list.length; j++) {
 	  if(sw[i] !== x.list[j]) {
 	    contEmpty++;
