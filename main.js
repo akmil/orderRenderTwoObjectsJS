@@ -44,13 +44,7 @@ function main(){
 	}      
       
      //show item that not in list
-    	for(var j=0; j<x.list.length; j++) {
-          if(sw[i] !== x.list[j]) {
-	    contEmpty++;
-	    if(contEmpty === x.list.length){
-	      console.log('**not in list ['+j+']:', sw[i] ,'val = ', (x[sw[i]])? x[sw[i]]: swager[sw[i]]);
-	    }
-        }
+     showItemOutOfList(x, i ,swager);
         
      	}//end for xArr      
       contEmpty =0;
@@ -62,6 +56,17 @@ function main(){
     console.log('additional Json have such keys : ' , additionalArray.join(', '));    
     console.log('order list:', metaJson.list.join(', '));
     console.log('...........');
+  }
+
+  //show item that not in list
+  function showItemOutOfList(x, i ,swager){
+	for(var j=0; j<x.list.length; j++) {
+	  if(sw[i] !== x.list[j]) {
+	    contEmpty++;
+	    if(contEmpty === x.list.length){
+	      console.log('**not in list ['+j+']:', sw[i] ,'val = ', (x[sw[i]])? x[sw[i]]: swager[sw[i]]);
+	    }
+	}
   }
   
 }//main END
